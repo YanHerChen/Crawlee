@@ -1,3 +1,8 @@
+package Crawl;
+
+import Frontier.Frontier;
+import Parser.DataProcess;
+import Storage.Data;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -8,13 +13,14 @@ import java.util.ArrayList;
 
 public class Crawl {
     private String threadName;
+    private Frontier Queue;
 
-    Crawl(String url, final String threadName) {
+    public Crawl(String url, final String threadName) {
         this.threadName = threadName;
-        download(url);
+        Connect(url);
     }
 
-    public void download(String url) {
+    public void Connect(String url) {
         String line;
         InputStream in = null;
         InputStreamReader r = null;
@@ -33,7 +39,7 @@ public class Crawl {
             while ((line = br.readLine()) != null) {
                 line_data.add(line);
             }
-            Storage.setData(threadName, line_data);
+            Data.setData(threadName, line_data);
 
             if (Queue.getSize() % 20 == 0) {
                 DataProcess.handling(threadName);

@@ -1,3 +1,5 @@
+package Storage;
+
 public class Queue {
     private static Node front, rear;
     private static int size;

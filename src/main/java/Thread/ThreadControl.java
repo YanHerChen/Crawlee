@@ -1,3 +1,8 @@
+package Thread;
+
+import Crawl.Crawl;
+import Frontier.Frontier;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;

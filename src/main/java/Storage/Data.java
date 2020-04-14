@@ -1,7 +1,9 @@
+package Storage;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Storage {
+public class Data {
     private static HashMap data = new HashMap<String, ArrayList<String>>();
 
     public static void setData(String TName, ArrayList<String> website_data) {

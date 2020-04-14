@@ -1,3 +1,7 @@
+package Parser;
+
+import Storage.Data;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -15,7 +19,7 @@ public class DataProcess {
     }
 
     public static void handling(String TName) {
-        ArrayList<String> data = Storage.getData(TName);
+        ArrayList<String> data = Data.getData(TName);
         download(data);
     }
 
