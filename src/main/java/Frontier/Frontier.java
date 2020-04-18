@@ -5,8 +5,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Frontier {
     private static AtomicInteger index;
-    public static ArrayList<String> url = new ArrayList<String>();
-    public static ArrayList<String> filename = new ArrayList<String>();
+    public static ArrayList<String> url = new ArrayList();
+    public static ArrayList<String> filename = new ArrayList();
 
     Frontier() {
         setUrl();

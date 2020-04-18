@@ -8,13 +8,14 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
 public class ThreadControl {
-    private final static int SemaphoreNumber = 5;
+    private int SemaphoreNumber;
+    private Crawl crawler;
 
-    ThreadControl() {
-        CreatThread();
+    public ThreadControl(int Number) {
+        this.SemaphoreNumber = Number;
     }
 
-    private void CreatThread() {
+    public void CreatThread() {
         ExecutorService exec = Executors.newCachedThreadPool();
         final Semaphore semp = new Semaphore(SemaphoreNumber);
 
@@ -24,7 +25,8 @@ public class ThreadControl {
                     try {
                         Thread.sleep((long) Math.random());
                         semp.acquire();
-                        Crawl crawler = new Crawl(Frontier.nextUrl(), Thread.currentThread().getName());
+                        crawler = new Crawl(Thread.currentThread().getName());
+                        crawler.Start(Frontier.nextUrl());
                         semp.release();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
