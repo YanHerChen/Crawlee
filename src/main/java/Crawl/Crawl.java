@@ -13,18 +13,20 @@ import java.util.ArrayList;
 
 public class Crawl {
     private String threadName;
-
-    public Crawl(final String threadName) {
+    private InputStream in = null;
+    private InputStreamReader r = null;
+    private BufferedReader br = null;
+    private ArrayList<String> line_data;
+    private String url;
+    public Crawl(String url, final String threadName) {
         this.threadName = threadName;
+        this.line_data = new ArrayList();
+        this.url = url;
     }
 
-    public void Start(String url) {
-        String line;
-        InputStream in = null;
-        InputStreamReader r = null;
-        BufferedReader br = null;
+    public void Start() {
         URL u;
-        ArrayList<String> line_data = new ArrayList();
+        String line;
         try {
             u = new URL(url);
             URLConnection conn = u.openConnection();
@@ -38,10 +40,6 @@ public class Crawl {
                 line_data.add(line);
             }
             Data.setData(threadName, line_data);
-
-            if (Queue.getSize() % 20 == 0) {
-                DataProcess.handling(threadName);
-            }
         } catch (Exception e) {
             e.getStackTrace();
         } finally {

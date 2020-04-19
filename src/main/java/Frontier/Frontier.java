@@ -4,17 +4,9 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Frontier {
-    private static AtomicInteger index;
+    private static AtomicInteger index = new AtomicInteger(0);
     public static ArrayList<String> url = new ArrayList();
     public static ArrayList<String> filename = new ArrayList();
-
-    Frontier() {
-        setUrl();
-    }
-
-    private static void setUrl() {
-        index = new AtomicInteger(0);
-    }
 
     private static int increment() {
         return index.getAndIncrement();
